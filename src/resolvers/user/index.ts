@@ -1,6 +1,7 @@
 import { User } from "../../types/types";
+import { users } from "../../dbconnections";
 
-const users = [
+const usersMock = [
   {
     id: "1",
     username: "macs03",
@@ -29,7 +30,9 @@ const getUser = async (
 ): Promise<User> => {
   const { id } = args;
 
-  const user: Array<User> = users.filter(user => user.id === id) as Array<User>;
+  const user: Array<User> = usersMock.filter(
+    user => user.id === id
+  ) as Array<User>;
 
   return user[0];
 };
@@ -40,7 +43,14 @@ const getUsers = async (
   _context: any,
   _info: any
 ): Promise<Array<User>> => {
-  const usersResponse: Array<User> = users as Array<User>;
+  const usersResponse: Array<User> = usersMock as Array<User>;
+
+  users.find().toArray((err: any, items: any[]) => {
+    if (err) {
+      console.error(err);
+    }
+    console.log(items);
+  });
 
   return usersResponse;
 };
@@ -51,7 +61,7 @@ const getMe = async (
   _context: any,
   _info: any
 ): Promise<User> => {
-  return users[0] as User;
+  return usersMock[0] as User;
 };
 
 export { getUser, getUsers, getMe };
