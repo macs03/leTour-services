@@ -21,7 +21,12 @@ const users = [
   }
 ];
 
-const getUser = (_: any, args: any, _context: any, _info: any) => {
+const getUser = async (
+  _: any,
+  args: any,
+  _context: any,
+  _info: any
+): Promise<User> => {
   const { id } = args;
 
   const user: Array<User> = users.filter(user => user.id === id) as Array<User>;
@@ -29,12 +34,24 @@ const getUser = (_: any, args: any, _context: any, _info: any) => {
   return user[0];
 };
 
-const getUsers = (_: any, _args: any, _context: any, _info: any) => {
-  return users;
+const getUsers = async (
+  _: any,
+  _args: any,
+  _context: any,
+  _info: any
+): Promise<Array<User>> => {
+  const usersResponse: Array<User> = users as Array<User>;
+
+  return usersResponse;
 };
 
-const getMe = (_: any, _args: any, _context: any, _info: any) => {
-  return users[0];
+const getMe = async (
+  _: any,
+  _args: any,
+  _context: any,
+  _info: any
+): Promise<User> => {
+  return users[0] as User;
 };
 
 export { getUser, getUsers, getMe };
