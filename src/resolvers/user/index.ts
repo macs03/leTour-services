@@ -6,19 +6,19 @@ const usersMock = [
     id: "1",
     username: "macs03",
     email: "macs03@gmail.com",
-    role: "admin"
+    role: "ADMIN"
   },
   {
     id: "2",
     username: "aurimar",
     email: "aurimar@gmail.com",
-    role: "user"
+    role: "USER"
   },
   {
     id: "3",
     username: "jondoe",
     email: "jondoe@gmail.com",
-    role: "user"
+    role: "GUESS"
   }
 ];
 
